@@ -1,0 +1,53 @@
+A) DB schema design and SQL
+
+Done
+
+(A-1) Create the following tables (models) structure.
+
+players
+
+- email (not null)
+
+- level (1 ~ 10 / not null)
+
+- age (not null)
+
+- gender (male or female)
+
+sports
+
+- name (not null) (e.g. tennis, soccer, basketball)
+
+The relations are as follows:
+
+Given there are A and B players, and there are tennis and basketball, both players can be associated with both sports.
+
+(A-1) Write an ORM query that retrieves players with a given gender, level and age (those are "AND" condition).
+
+※Test code is NOT necessary.
+
+※Add a comment of a raw SQL under the ORM code as follows.
+
+e.g.) SELECT * FROM teachers WHERE name = "John"
+
+(A-1) SELECT * FROM PLAYERS WHERE level = 8 AND age = 25 AND gender = 'M';
+
+(A-2) Write an ORM query that retrieves sports multiple (= more than or equal to 2) players are associated with.
+
+-----------------------------------------
+ (A-2) 
+  SELECT name FROM SPORTS WHERE SPORTS.sport_id = (select sport_id
+  from sports_players
+  group by sport_id
+  having count(*) >= 2);
+ 
+------------------------------------------- 
+
+Done
+
+(A-3) Write an ORM query that retrieves sports no player is associated with.
+
+--------------------
+  A-3) select name
+  from SPORTS WHERE sport_id NOT IN (SELECT sport_id FROM sports_players);
+--------------------

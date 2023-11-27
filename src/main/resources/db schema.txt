@@ -11,12 +11,15 @@ CREATEREATE TABLE IF NOT EXISTS Players (
 	constraint AGE_GRAETE_THAN_ZERO check (age > 0),
 	PRIMARY KEY (player_id)
 );
+----------------------------
 CREATE TABLE IF NOT EXISTS SPORTS (
     sport_id int NOT NULL AUTO_INCREMENT,
 	name varchar(255) NOT NULL,
 	CONSTRAINT UC_SPORTS UNIQUE (name),
 	PRIMARY KEY (sport_id)
 );
+
+associated  table----------------------------
 
 CREATE TABLE IF NOT EXISTS sports_players (
     sports_payers_id int NOT NULL AUTO_INCREMENT,

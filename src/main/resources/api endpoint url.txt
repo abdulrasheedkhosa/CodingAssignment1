@@ -1,0 +1,37 @@
+(B) API
+(B-1) Create an API endpoint to return sports with given names (1 or more names) in JSON format. The associated players should also be returned. It should cover failure cases as well.
+
+(B-1) Create an API endpoint to return sports with given names (1 or more names) in JSON format.
+The associated players should also be returned. It should cover failure cases as well.
+ 
+ @GetMapping("/sportsPlayers")
+ 
+ http://localhost:8084/sportsPlayers
+ 
+
+(B-2) Create an API endpoint to return players with no sports.
+
+  @GetMapping("/playerWithoutSports")
+
+  http://localhost:8084/playerWithoutSports
+
+
+(B-3) Create an API endpoint to update player sports
+
+ @PutMapping("/updateSportsOfPlayer/{playerName}/{sportsName}")
+ 
+ http://localhost:8084/updateSportsOfPlayer/{playerName}/{sportsName}
+
+
+(B-4) Create an API endpoint to delete sports and its associated data.
+
+ @DeleteMapping("/deleteSport/{name}")
+ 
+  
+ http://localhost:8084/deleteSport/{name}
+ 
+ 
+(B-5) Please make a paginated player list with category sports filter. Pagination amount should be by 10.
+
+http://localhost:8084/getSportPlayersBySportsCategory?name=snoccer&pageSize=10
+
