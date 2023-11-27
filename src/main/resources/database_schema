@@ -1,0 +1,43 @@
+CREATE SCHEMA `sportsplayers` ;
+----------------------------
+CREATEREATE TABLE IF NOT EXISTS Players (
+    player_id int NOT NULL AUTO_INCREMENT,
+    email varchar(255) NOT NULL,
+    level int NOT NULL,
+    age int NOT NULL,
+    gender varchar(20) NOT NULL,
+    constraint Gender_M_FOR_MALE_F_FOR_FEMALE check (gender = 'F' or gender = 'M'),
+    constraint Levlel_Value_1_TO_10 check (level between 1 and 10),
+	constraint AGE_GRAETE_THAN_ZERO check (age > 0),
+	PRIMARY KEY (player_id)
+);
+CREATE TABLE IF NOT EXISTS SPORTS (
+    sport_id int NOT NULL AUTO_INCREMENT,
+	name varchar(255) NOT NULL,
+	CONSTRAINT UC_SPORTS UNIQUE (name),
+	PRIMARY KEY (sport_id)
+);
+
+CREATE TABLE IF NOT EXISTS sports_players (
+    sports_payers_id int NOT NULL AUTO_INCREMENT,
+    player_id int NOT NULL,
+    sport_id int NOT NULL,
+    CONSTRAINT FK_PLAYERS_ID FOREIGN KEY (player_id)
+	REFERENCES Players(player_id),
+	CONSTRAINT FK_SPORTS_ID FOREIGN KEY (sport_id)
+    REFERENCES SPORTS(sport_id),
+	CONSTRAINT UC_SPORTS_PLAYERS UNIQUE (player_id,sport_id),
+	PRIMARY KEY (sports_payers_id)
+);
+INSERT INTO sportsplayers.players (`email`, `level`, `age`, `gender`) VALUES ('rasheed@gmail.com', '8', '25', 'M');
+INSERT INTO sportsplayers.players (`email`, `level`, `age`, `gender`) VALUES ('kumail@g.com', '9', '9', 'M');
+
+INSERT INTO `sportsplayers`.`sports` (`name`) VALUES ('football');
+INSERT INTO `sportsplayers`.`sports` (`name`) VALUES ('hockey');
+INSERT INTO `sportsplayers`.`sports` (`name`) VALUES ('snoccer');
+INSERT INTO `sportsplayers`.`sports` (`name`) VALUES ('volly ball');
+
+INSERT INTO `sportsplayers`.`sports_players` (`player_id`, `sport_id`) VALUES ('2', '2');
+
+
+---------------------------------------------------------------------
